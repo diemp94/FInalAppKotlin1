@@ -1,7 +1,8 @@
-package com.example.finalappkotlin
+package com.example.finalappkotlin.activities.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.finalappkotlin.R
 
 class LoginActivity : AppCompatActivity() {
 
