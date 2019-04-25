@@ -3,8 +3,9 @@ package com.example.finalappkotlin.activities.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.example.finalappkotlin.R
+import com.example.finalappkotlin.goToActivity
+import com.example.finalappkotlin.toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -17,32 +18,18 @@ class SignUpActivity : Activity() {
         setContentView(R.layout.activity_sign_up)
 
         btnGoLogIn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            goToActivity<LoginActivity> { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
 
         btnSignUp.setOnClickListener {
             val email = etEMailSignUp.text.toString()
             val password = etLoginPassword.text.toString()
-            if(isVailidEmailAndPassword(email,password)){
-                signUpByEmail(email,password)
-            }else{
-                Toast.makeText(this, "Please fill all the data and confirm password is correct.", Toast.LENGTH_SHORT).show()
+            if (isVailidEmailAndPassword(email, password)) {
+                signUpByEmail(email, password)
+            } else {
+                toast("Please fill all the data and confirm password is correct.")
             }
-        }
-
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = mAuth.currentUser
-        if (currentUser == null) {
-            Toast.makeText(this, "User IS NOT logged in", Toast.LENGTH_SHORT).show()
-            try {
-                signUpByEmail("diemp94@hotmail.com", "petete0714")
-            } catch (exception: Exception) {
-                Toast.makeText(this, exception.toString(), Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            Toast.makeText(this, "User IS logged in", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -52,18 +39,18 @@ class SignUpActivity : Activity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this, "An email has sent to you. Please confirm before sign in.", Toast.LENGTH_SHORT)
-                        .show()
-                    val user = mAuth.currentUser
+                    toast("An email has sent to you. Please confirm before sign in.")
+                    goToActivity<LoginActivity> { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
+                    overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(this, "An unexpected error occurred, please try again.", Toast.LENGTH_SHORT).show()
+                    toast("An unexpected error occurred, please try again.")
                 }
             }
     }
 
-    private fun isVailidEmailAndPassword(email: String,password: String):Boolean{
-        return !email.isNullOrEmpty() && !password.isNullOrEmpty() &&
+    private fun isVailidEmailAndPassword(email: String, password: String): Boolean {
+        return !email.isEmpty() && !password.isEmpty() &&
                 etLoginPassword.text.toString() == etLoginConfirmPassword.text.toString()
     }
 }
