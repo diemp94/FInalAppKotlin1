@@ -23,10 +23,11 @@ class SignUpActivity : Activity() {
         btnSignUp.setOnClickListener {
             val email = etEMailSignUp.text.toString()
             val password = etLoginPassword.text.toString()
-            if (isVailidEmailAndPassword(email, password)) {
+            val confirmPassword = etLoginConfirmPassword.text.toString()
+            if (iSvalidEmail(email) && iSvalidPassword(password) && isValidConfirmPassword(password, confirmPassword)) {
                 signUpByEmail(email, password)
             } else {
-                toast("Please fill all the data and confirm password is correct.")
+                toast("Please make sure all the data is correct.")
             }
         }
 
@@ -38,7 +39,11 @@ class SignUpActivity : Activity() {
                 if (iSvalidPassword(it)) null else "Password should contain 1 lowerCase, 1 uppercase, 1 number, 1 specialCaracter and 4 characters length at least"
         }
         etLoginConfirmPassword.validate {
-            etLoginConfirmPassword.error = if (isValidConfirmPassword(etLoginPassword.text.toString(),it)) null else "The passwords are differentes"
+            etLoginConfirmPassword.error = if (isValidConfirmPassword(
+                    etLoginPassword.text.toString(),
+                    it
+                )
+            ) null else "The passwords are differentes"
         }
 
     }
@@ -58,11 +63,6 @@ class SignUpActivity : Activity() {
                     toast("An unexpected error occurred, please try again.")
                 }
             }
-    }
-
-    private fun isVailidEmailAndPassword(email: String, password: String): Boolean {
-        return !email.isEmpty() && !password.isEmpty() &&
-                etLoginPassword.text.toString() == etLoginConfirmPassword.text.toString()
     }
 
 
