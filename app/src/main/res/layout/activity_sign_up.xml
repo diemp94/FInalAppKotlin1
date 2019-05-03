@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:text="Go back to login"
-            android:textColor="@color/colroWhite"
+            android:textColor="@color/colorWhite"
             android:elevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

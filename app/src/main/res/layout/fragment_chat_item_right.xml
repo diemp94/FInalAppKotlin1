@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:layout_editor_absoluteX="0dp"
+	app:layout_editor_absoluteY="25dp">
+
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/ivProfileRight"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/ic_info"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		/>
+
+	<TextView
+		android:id="@+id/tvMessageRight"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:background="@drawable/bubble_chat_right"
+		android:maxWidth="300dp"
+		android:paddingStart="8dp"
+		android:paddingTop="8dp"
+		android:paddingEnd="18dp"
+		android:paddingBottom="8dp"
+		app:layout_constraintBottom_toBottomOf="@+id/ivProfileRight"
+		app:layout_constraintEnd_toStartOf="@+id/ivProfileRight"
+		app:layout_constraintTop_toTopOf="@+id/ivProfileRight"
+		tools:text="hola mundo como estan todos" />
+
+	<TextView
+		android:id="@+id/tvTimeRight"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="2dp"
+		android:layout_marginEnd="4dp"
+		android:text="12:12"
+		android:textSize="7sp"
+		android:textStyle="italic"
+		app:layout_constraintBottom_toBottomOf="@+id/tvMessageRight"
+		app:layout_constraintEnd_toStartOf="@+id/tvMessageRight"
+		/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
