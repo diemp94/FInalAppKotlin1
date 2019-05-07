@@ -7,3 +7,5 @@ data class Message(
     val message: String = "",
     val profileImageURL: String = "",
     val sentAt: Date = Date())
+
+
