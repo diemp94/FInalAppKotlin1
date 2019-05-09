@@ -13,8 +13,8 @@
 		android:background="@color/colorPrimary"
 		app:elevation="16dp"
 		app:menu="@menu/bottom_navegation_menu"
-		app:itemIconTint="@drawable/bottom_navegation_color"
-		app:itemTextColor="@drawable/bottom_navegation_color"
+		app:itemIconTint="@drawable/bottom_navegation_color2"
+		app:itemTextColor="@drawable/bottom_navegation_color2"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
